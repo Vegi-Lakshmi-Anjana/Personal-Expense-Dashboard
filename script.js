@@ -45,26 +45,6 @@ function addExpense() {
   showExpenses();
 }
 
-function showExpenses() {
-  let expenses = getExpenses();
-  let list = document.getElementById("list");
-  list.innerHTML = "";
-
-  let total = 0;
-
-  for (let i = 0; i < expenses.length; i++) {
-    let e = expenses[i];
-    total = total + Number(e.amount);
-
-    let item = document.createElement("li");
-
-let text = document.createElement("span");
-
-text.innerText =
-"₹" + e.amount +
-" - " + e.category +
-" - " + e.note;
-
 let deleteBtn = document.createElement("span");
 
 deleteBtn.innerHTML = "🗑️";
@@ -81,15 +61,76 @@ deleteBtn.onclick = function () {
   }
 
 };
+function showExpenses() {
 
-item.appendChild(text);
+  let expenses = getExpenses();
+  let list = document.getElementById("list");
 
-item.appendChild(deleteBtn);
+  list.innerHTML = "";
 
-list.appendChild(item);
+  let total = 0;
+
+  let categoryTotals = {};
+
+  for (let i = 0; i < expenses.length; i++) {
+
+    let e = expenses[i];
+
+    total += Number(e.amount);
+
+    if (categoryTotals[e.category]) {
+      categoryTotals[e.category] += Number(e.amount);
+    } else {
+      categoryTotals[e.category] = Number(e.amount);
+    }
+
+    let item = document.createElement("li");
+
+    let text = document.createElement("span");
+
+    text.innerText =
+      "₹" + e.amount +
+      " - " + e.category +
+      " - " + e.note;
+
+    let deleteBtn = document.createElement("span");
+
+    deleteBtn.innerHTML = "🗑️";
+
+    deleteBtn.className = "delete-btn";
+
+    deleteBtn.onclick = function () {
+
+      let confirmDelete =
+        confirm("Delete this expense?");
+
+      if (confirmDelete) {
+        deleteExpense(i);
+      }
+    };
+
+    item.appendChild(text);
+    item.appendChild(deleteBtn);
+
+    list.appendChild(item);
   }
 
-  document.getElementById("total").innerText = "Total: ₹" + total;
+  document.getElementById("total").innerText =
+    "Total: ₹" + total;
+
+  let summary = document.getElementById("summary");
+
+  summary.innerHTML = "";
+
+  for (let category in categoryTotals) {
+
+    let li = document.createElement("li");
+
+    li.innerText =
+      category + ": ₹" + categoryTotals[category];
+
+    summary.appendChild(li);
+  }
 }
 
 function downloadCSV() {
