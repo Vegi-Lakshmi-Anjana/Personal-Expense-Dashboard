@@ -36,4 +36,22 @@ button {
 
 button:hover {
   background: #333;
+  li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+.delete-btn {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+}
 }
