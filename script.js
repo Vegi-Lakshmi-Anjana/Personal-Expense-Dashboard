@@ -7,6 +7,16 @@ function getExpenses() {
 function saveExpenses(expenses) {
   localStorage.setItem("expenses", JSON.stringify(expenses));
 }
+function deleteExpense(index) {
+
+  let expenses = getExpenses();
+
+  expenses.splice(index, 1);
+
+  saveExpenses(expenses);
+
+  showExpenses();
+}
 
 function addExpense() {
   let amount = document.getElementById("amount").value;
@@ -47,8 +57,36 @@ function showExpenses() {
     total = total + Number(e.amount);
 
     let item = document.createElement("li");
-    item.innerText = "₹" + e.amount + " - " + e.category + " - " + e.note;
-    list.appendChild(item);
+
+let text = document.createElement("span");
+
+text.innerText =
+"₹" + e.amount +
+" - " + e.category +
+" - " + e.note;
+
+let deleteBtn = document.createElement("span");
+
+deleteBtn.innerHTML = "🗑️";
+
+deleteBtn.className = "delete-btn";
+
+deleteBtn.onclick = function () {
+
+  let confirmDelete =
+      confirm("Delete this expense?");
+
+  if(confirmDelete){
+      deleteExpense(i);
+  }
+
+};
+
+item.appendChild(text);
+
+item.appendChild(deleteBtn);
+
+list.appendChild(item);
   }
 
   document.getElementById("total").innerText = "Total: ₹" + total;
