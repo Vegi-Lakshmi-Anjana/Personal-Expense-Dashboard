@@ -36,7 +36,7 @@ button {
 
 button:hover {
   background: #333;
-}
+
  li {
   display: flex;
   justify-content: space-between;
@@ -52,7 +52,7 @@ button:hover {
   cursor: pointer;
   font-size: 18px;
   margin-left: auto;
-  colour: red; 
+  color: red; 
   padding-left: 20px;
 }
 
