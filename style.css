@@ -36,10 +36,11 @@ button {
 
 button:hover {
   background: #333;
-  li {
+ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   margin: 8px 0;
   padding: 8px;
   background: #f9f9f9;
@@ -49,6 +50,8 @@ button:hover {
 .delete-btn {
   cursor: pointer;
   font-size: 18px;
+  margin-left: auto;
+  padding-left: 20px;
 }
 
 .delete-btn:hover {
