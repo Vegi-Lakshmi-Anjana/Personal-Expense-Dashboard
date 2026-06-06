@@ -202,6 +202,3 @@ Ensure that the exported `expenses.csv` file is present in the same directory as
 - Monthly Spending Reports
 - Dynamic Category Handling in the Reporting Utility
 - Data Visualization and Charts
-
----
-
