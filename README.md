@@ -1,4 +1,4 @@
-# 💰Personal Expense Dashboard with CSV Reporting Utility
+# Personal Expense Dashboard with CSV Reporting Utility
 
 A web-based expense tracking application built using HTML, CSS, and JavaScript that allows users to record expenses, monitor category-wise spending, store data using browser Local Storage, and export records as CSV files. The project also includes a C-based reporting utility that processes exported CSV records and generates expenditure summaries.
 
