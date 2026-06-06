@@ -205,7 +205,3 @@ Ensure that the exported `expenses.csv` file is present in the same directory as
 
 ---
 
-##  Author
-
-**Vegi Lakshmi Anjana**  
-B.Tech, IIT Guwahati
